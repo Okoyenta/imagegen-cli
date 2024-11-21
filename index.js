@@ -52,13 +52,20 @@ program
             return;
         }
 
-        if(!ratio){
-        if ( ratio != "landscape" || ratio != "square" || ratio != "portrait" ){
-            console.error(
-                'ratio not correct. Please set your -r as landscape or square or portrait.'
-            );
-            return;
-        }
+    //     if(!ratio){
+    //     if ( ratio != "landscape" || ratio != "square" || ratio != "portrait" ){
+    //         console.error(
+    //             'ratio not correct. Please set your -r as landscape or square or portrait.'
+    //         );
+    //         return;
+    //     }
+    // }
+
+    if (ratio && !["landscape", "square", "portrait"].includes(ratio)) {
+        console.error(
+            'Ratio not correct. Please set your -r as landscape, square, or portrait.'
+        );
+        return;
     }
 
     if(!prompt){
@@ -69,6 +76,10 @@ program
     }
         // Ensure output directory exists
         ensureDirectoryExists(directory);
+
+        // console.log('\n===================================');
+        // console.log('     Image Generator CLI');
+        // console.log('===================================\n');
 
         console.log('\nGenerating image...\n');
         const savedPath = await generateImage(apiKey, prompt, directory, ratio);
@@ -82,12 +93,20 @@ program
         console.log(`\nImage generation complete! Image saved at: ${savedPath}`);
     });
 
-// Welcome message with figlet
-figlet('Image Generator', (err, data) => {
-    if (err) {
-        console.log('Error loading welcome message:', err.message);
-    } else {
-        console.log(data);
-        program.parse(process.argv);
-    }
-});
+// // Welcome message with figlet
+// figlet('Image Generator', (err, data) => {
+//     if (err) {
+//         console.log('Error loading welcome message:', err.message);
+//     } else {
+//         console.log(data);
+//         program.parse(process.argv);
+//     }
+// });
+
+// Parse the CLI arguments
+console.log('\n===================================');
+console.log('     ');
+console.log('     Image Generator CLI');
+console.log('     ');
+console.log('===================================\n');
+program.parse(process.argv);
