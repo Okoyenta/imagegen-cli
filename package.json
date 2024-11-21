@@ -1,7 +1,7 @@
 {
   "name": "imagegen-cli",
   "version": "1.0.0",
-  "description": "application to use open Ai client library to communicate with together ai models to generate free images.",
+  "description": "The Image Generator CLI is a command-line tool that allows users to generate AI-powered images by providing prompts. This tool supports saving API keys, generating images, and storing them locally. This project makes use of together ai API. it uses free flux model from together ai to generate free images.",
   "main": "build/bundle.js",
   "bin": {
     "imagegen": "./build/bundle.js"
